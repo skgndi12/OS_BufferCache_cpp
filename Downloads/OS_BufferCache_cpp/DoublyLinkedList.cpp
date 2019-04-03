@@ -38,7 +38,7 @@ void DDL::Insert(Block item)
     blocks.push_back(item);
     return;
   }
-  std::cout << "This Block is Duplicated\n";
+  std::cout << "This Block " << item.GetHash() << " is Duplicated\n";
 }
 
 void DDL::Delete(Block item)
@@ -59,7 +59,12 @@ void DDL::Print()
   int i = 0;
   for(std::list<Block>::iterator it = blocks.begin(); it != blocks.end(); it++) 
   {
-    std::cout << "list[" << i << "] => " << " " << "hash value: " << it->GetHash() << " " << "state: " << it->GetState() << '\n';
+    std::cout << "*----------------*" << '\n';
+        std::cout << "|                |" << '\n';
+        std::cout << "|       " << it->GetHash() << "       |" << '\n';
+        std::cout << "       " << it->GetState()   << '\n';
+        std::cout << "|                |" << '\n';
+        std::cout << "*----------------*" << '\n';
     i++;
   }
 }

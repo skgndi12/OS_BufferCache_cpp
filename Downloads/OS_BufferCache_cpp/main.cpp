@@ -1,26 +1,25 @@
 #include "Application.h"
+#include <string>
 
 
 int main()
 {
-    DDL mylist;
-    Block test;
-    Block random;
-    Block random2;
-    Block random3;
-    std::cout << random.GetState() << '\n';
-    std::cout << random2.GetState() << '\n';
-    std::cout << random3.GetState() << '\n';
-    test.UpdateHash(3);
-    mylist.Insert(test);
-    random.UpdateHash(4);
-    mylist.Insert(random);
-    mylist.Print();
-    Block temp;
-    temp.UpdateHash(3);
-    temp.UpdateState(test.GetState());
-    mylist.Delete(temp);
-    mylist.Print();
+    srand((unsigned int)time(0));
+    std::string size;
+    std::string max;
+    std::cout << "Input size: ";
+    std::getline(std::cin, size);
+    Application app(stoi(size));
+    std::cout << "How many element: ";
+    std::getline(std::cin, max);
+    int *value = new int[stoi(max)];
+    for(int i = 0; i < stoi(max); i++)
+    {
+        value[i] = std::rand() % 100;
+    }
+    app.Initialize(value, stoi(max));
+    app.Print();
+    delete [] value;
     return 0;
 
 }
