@@ -73,3 +73,11 @@ int DDL::GetSize()
 {
   return blocks.size();
 }
+
+void DDL::operator=(const DDL& rhs)
+{
+  for(std::list<Block>::iterator it = blocks.begin(); it != blocks.end(); it++)
+  {
+    
+  }
+}

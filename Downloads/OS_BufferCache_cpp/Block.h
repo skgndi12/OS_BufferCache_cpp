@@ -5,26 +5,27 @@
 #include <cstdlib>
 #include <ctime>
 
-enum
+enum BufferState
 {
     UNLOCK,
     LOCK,
     DELAY,
-    WRITE
+    WRITE,
+    READ,
+    BS_MAX
 };
-
 
 class Block
 {
     private:
-        std::string state;
+        BufferState state;
         int hash_value;
     public:
         Block();
-        Block(int m_hash, std::string m_state);
-        void UpdateState(std::string new_state);
+        Block(int hash, BufferState state);
+        void UpdateState(BufferState new_state);
         void UpdateHash(int value);
-        std::string GetState() const;
+        BufferState GetState() const;
         int GetHash() const;
         void operator=(const Block& rhs);
         bool operator==(const Block& rhs);

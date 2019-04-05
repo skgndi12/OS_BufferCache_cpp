@@ -2,34 +2,17 @@
 
 Block::Block()
 {
-    srand((unsigned int)time(0));
-    int random = rand()%4;
-    switch(random)
-    {
-        case UNLOCK:
-            state = "UNLOCK";
-            break;
-        case LOCK: 
-            state = "LOCK";
-            break;
-        case DELAY:
-            state = "DELAY";
-            break;
-        case WRITE:
-            state = "WRITE";
-            random = 0;
-            break;
-    }
-            
+    int random = rand() % BS_MAX;
+    state = static_cast<BufferState>(random);
 }
 
-Block::Block(int m_hash, std::string m_state)
+Block::Block(int hash, BufferState state)
+    : hash_value(hash),
+    state(state)
 {
-    hash_value = m_hash;
-    state = m_state;
 }
 
-void Block::UpdateState(std::string new_state)
+void Block::UpdateState(BufferState new_state)
 {
     state = new_state;
 }
@@ -39,7 +22,7 @@ void Block::UpdateHash(int value)
     hash_value = value;
 }
 
-std::string Block::GetState() const
+BufferState Block::GetState() const
 {
     return state;
 }

@@ -2,27 +2,30 @@
 #define APPLICATION_H
 #include "DoublyLinkedList.h"
 #include <fstream>
+#include <vector>
 const int MAX_SIZE = 5;
 class Application
 {
     private:
-        DDL FreeList;
-        DDL * BlockList; 
+        DDL freeList;
+        std::vector<DDL> blockList; 
         std::ifstream inFile;
         std::ofstream outFile;
-        int size;
+        const int size;
     public:
         Application(int max = MAX_SIZE); 
         ~Application()
         {
-            delete []BlockList;
             outFile.close();
             inFile.close();
         }
+        void Run();
         void Initialize(int *value, int num);
         void Print();
+        void FreeListInitialize();
         void ReadFromFile();
         void WriteToFile();
+
 
 };
 #endif //APPLICATION_H
