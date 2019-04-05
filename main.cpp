@@ -2,24 +2,28 @@
 #include <string>
 
 
+
 int main()
 {
     srand((unsigned int)time(0));
     std::string size;
     std::string max;
+    std::vector<int> value;
+    int bl_num;
     std::cout << "Mod Number: ";
     std::getline(std::cin, size);
     Application app(stoi(size));
     std::cout << "Numbers of Buffer: ";
     std::getline(std::cin, max);
-    int *value = new int[stoi(max)];
-    for(int i = 0; i < stoi(max); i++)
+    bl_num = stoi(max);
+    for(int i = 0; i < bl_num; i++)
     {
-        value[i] = std::rand() % 100;
+        value.push_back(i);
     }
-    app.Initialize(value, stoi(max));
+    std::random_shuffle(value.begin(), value.end());
+    app.Initialize(value);
     app.Print();
-    delete [] value;
+    app.Run();
     return 0;
 
 }

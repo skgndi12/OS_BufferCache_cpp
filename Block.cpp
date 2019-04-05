@@ -17,6 +17,8 @@ void Block::UpdateState(BufferState new_state)
     state = new_state;
 }
 
+// testing..
+
 void Block::UpdateHash(int value)
 {
     hash_value = value;

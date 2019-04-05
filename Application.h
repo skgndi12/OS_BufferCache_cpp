@@ -3,6 +3,7 @@
 #include "DoublyLinkedList.h"
 #include <fstream>
 #include <vector>
+#include <unistd.h>
 const int MAX_SIZE = 5;
 class Application
 {
@@ -20,7 +21,7 @@ class Application
             inFile.close();
         }
         void Run();
-        void Initialize(int *value, int num);
+        void Initialize(std::vector<int>& value);
         void Print();
         void FreeListInitialize();
         void ReadFromFile();

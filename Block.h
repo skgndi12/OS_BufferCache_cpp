@@ -11,7 +11,6 @@ enum BufferState
     LOCK,
     DELAY,
     WRITE,
-    READ,
     BS_MAX
 };
 
