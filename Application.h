@@ -1,11 +1,11 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
-#include "DoublyLinkedList.h"
-#include <fstream>
+#include <iostream>
 #include <vector>
 #include <unistd.h>
-const int MAX_SIZE = 5;
-class Application
+#include <string>
+#include "BufferCache.hpp"
+/*class Application
 {
     private:
         DDL freeList;
@@ -27,6 +27,19 @@ class Application
         void ReadFromFile();
         void WriteToFile();
 
+
+};*/
+
+class Application
+{
+public:
+    Application(uint32_t queue_size);
+    void Run();
+    void Insert(BlockNum block_num, BufferState state);
+    void Print();
+private:
+    BufferCache bufferCache;
+    uint32_t queue_size;
 
 };
 #endif //APPLICATION_H
